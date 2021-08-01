@@ -8,7 +8,7 @@ class Api {
      * Initialise new app
      * @param {object} metadata Configuration object
      */
-     constructor(conmetadatafig) {
+     constructor(metadata) {
         if (!metadata.baseURL) throw new Error('Error: No API url provided in config');
         this.baseURL = metadata.baseURL;
         this.methods = metadata.methods || {};
