@@ -2,7 +2,7 @@
 const Api = require('./Api');
 
 // Get ESV API config from config file
-const esvApiConfig = require('../config').apis.esv;
+const metadata = require('../assets/apiMetadata').apis.esv;
 
 // Load readline for REPL interface
 const readline = require('readline');
@@ -20,7 +20,7 @@ class ESVApi extends Api {
     constructor(apiKey) {
         super({
             apiKey,
-            ...esvApiConfig
+            ...metadata
         });
     }
 

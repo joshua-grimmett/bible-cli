@@ -6,13 +6,13 @@ const axios = require('axios');
 class Api {
     /**
      * Initialise new app
-     * @param {object} config Configuration object
+     * @param {object} metadata Configuration object
      */
-     constructor(config) {
-        if (!config.baseURL) throw new Error('Error: No API url provided in config');
-        this.baseURL = config.baseURL;
-        this.methods = config.methods || {};
-        this._apiKey = config.apiKey || null;
+     constructor(conmetadatafig) {
+        if (!metadata.baseURL) throw new Error('Error: No API url provided in config');
+        this.baseURL = metadata.baseURL;
+        this.methods = metadata.methods || {};
+        this._apiKey = metadata.apiKey || null;
     }
 
     get apiKey() {
