@@ -43,7 +43,6 @@ class ESVApi extends Api {
         const { getPassage: endpoint } = this.methods;
 
         const data = await this.endpointGetRequest(q, endpoint);
-
         // Extract passages from data
         const passages = data.passages ? 
             data.passages.join(' ') :
@@ -52,15 +51,22 @@ class ESVApi extends Api {
         // If no passage provided, return 404 error message
         if (!passages) return endpoint.messages[404];
 
+        let output = passages.trim();
+        
+        // If passage query included add to output
+        if (endpoint.params['include-passage-query']) {
+            output += `\n${data.query}`;
+        }
+
         /**
          * Save to clipboard if option selected
          */
          if (options.copy) {
             // Copy to clipboard
-            clipboard.writeSync(passages);
+            clipboard.writeSync(output);
         }
 
-        return passages;
+        return output;
     }
 
     createGetPassageRepl(options) {
@@ -75,8 +81,8 @@ class ESVApi extends Api {
         rl.on('line', async query => {
             // Retrieve passage text from query
             const text = await this.getPassage(query, options);
-    
-            process.stdout.write(text);
+
+            console.log(text);
     
             // Refresh prompt
             rl.prompt();
