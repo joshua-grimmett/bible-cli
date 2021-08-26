@@ -3,7 +3,7 @@
 // Load environment vairables
 require('dotenv').config();
 
-const ESVApi = require('./apis/ESVApi');
+const ESVApi = require('../apis/ESVApi');
 
 // Load program object for CLI
 const { program } = require('commander');
