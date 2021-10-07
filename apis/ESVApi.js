@@ -36,6 +36,7 @@ class ESVApi extends Api {
     /**
      * Fetch passage query from ESV Bible API
      * @param {*} q Passage query
+     * @param {Object} options Query options
      * @returns {String} ESV Bible Passage
      */
     async getPassage(q, options) {
@@ -69,6 +70,10 @@ class ESVApi extends Api {
         return output;
     }
 
+    /**
+     * Create a passage search repl
+     * @param {Object} options 
+     */
     createGetPassageRepl(options) {
         // Create new readline interface
         const rl = new readline.createInterface({
