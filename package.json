@@ -1,6 +1,6 @@
 {
-  "name": "esv-python",
-  "version": "1.0.0",
+  "name": "esv-tools",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,14 +9,15 @@
   "bin": {
     "esv": "./scripts/esv-cli.js"
   },
-  "author": "",
+  "author": "Joshua Grimmett",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
     "chalk": "^4.1.1",
     "clipboardy": "^2.3.0",
     "commander": "^8.1.0",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "readline": "^latest"
   },
   "devDependencies": {
     "@types/yargs": "^17.0.2"
