@@ -8,7 +8,8 @@
   },
   "bin": {
     "esv": "./scripts/esv-cli.js",
-    "nte": "./scripts/nte-cli.js"
+    "bible": "./scripts/bible-cli.js",
+    "nte": "./scripts/bible-cli.js -t nte"
   },
   "author": "Joshua Grimmett",
   "license": "ISC",
