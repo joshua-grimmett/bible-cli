@@ -11,8 +11,11 @@ class Api {
      constructor(metadata) {
         if (!metadata.baseURL) throw new Error('Error: No API url provided in config');
         this.baseURL = metadata.baseURL;
-        this.methods = metadata.methods || {};
-        this._apiKey = metadata.apiKey || null;
+        this.methods = metadata.methods ?? {};
+        this._apiKey = metadata.apiKey ?? null;
+        this.queryKey = metadata.queryKey ?? 'q';
+        this.scrape = metadata.scrape ?? false;
+        if (this.scrape) this.scrapeData = metadata.scrapeData ?? {}
     }
 
     get apiKey() {
@@ -32,7 +35,7 @@ class Api {
      */
     async endpointGetRequest(q, endpoint) {
         // Append query to default params
-        const params = { q, ...endpoint.params };
+        const params = { [endpoint.queryKey]: q, ...endpoint.params };
 
         // Initialise empty headers
         const headers = {};
