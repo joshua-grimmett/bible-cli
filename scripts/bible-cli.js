@@ -3,7 +3,7 @@
 // Load environment vairables
 require('dotenv').config();
 
-const NTEApi = require('../apis/NTEApi');
+const BibleGatewayApi = require('../apis/BibleGatewayApi');
 
 // Load program object for CLI
 const { program } = require('commander');
@@ -19,7 +19,7 @@ async function main(queryArray) {
     const query = queryArray.join(' ');
 
     // Initialise new app
-    const app = new NTEApi();
+    const app = new BibleGatewayApi();
 
     /**
      * Read-eval-print-loop when no args
@@ -44,6 +44,8 @@ async function main(queryArray) {
 program
     // Define options
     .option('-c, --copy', 'Copy passage to clipboard')
+    // Define version option
+    .option('-t, --translation <translation>', 'Set translation')
     // Define query argument
     .argument('[query...]', 'Passage query')
     // Route actions to main

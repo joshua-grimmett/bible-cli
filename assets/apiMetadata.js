@@ -1,12 +1,16 @@
 
 
 /**
- * Format BibleGateway.com verse to have square brackets around verse numbers
+ * Format BibleGateway.com verses
  * @param {String} str 
  * @returns string
  */
 function formatVerse(str) {
-    return str.replace(/\b(\d+)\b/g, '[$1]');
+    return str.replace(/\b(\d+)\b/g, '[$1]') // Brackets around verse numbers
+        // Remove cross-refferences
+        .replace(/(\([A-Za-z]{1,4}\)|(\[[A-Za-z]{1,4}\]))/g, '') 
+        // Remove empty spaces
+        .replace(/\s{2,}/g, ' ');
 }
 
 
@@ -49,7 +53,7 @@ module.exports = {
                 }
             }
         },
-        "nte": {
+        "biblegateway": {
             "scrape": true,
             "baseURL": "https://biblegateway.com/",
             "methods": {
@@ -60,18 +64,32 @@ module.exports = {
                     "queryKey": "search",
                     "params": {
                         "version": "NTE",
-                        "include-passage-query": true
+                        "include-passage-query": true,
+                        "include-translation": true
                     },
                     "scrapeData": {
                         "parentNode": ".result-text-style-normal",
                         "queryNode": ".dropdown-display-text",
-                        "childrenFilters": child => {
+                        "translationNode": ".dropdown-display-text",
+                        childrenFilters($, el) {
+                            const child = $(el).first();
                             const className = child.attr('class')
+                        
+                            // Recurse if std-text
+                            if (className === 'std-text') {
+                                return child.first().children().map((_i, el) => {
+                                    return this.childrenFilters($, el);
+                                }).toArray().join('\n');
+                            }
+                            
                             if(className === 'chapter-1') 
                                 return formatVerse(setCharAt(child.text(), 0, '1'))
 
                             // Filter full chapter link
                             if (className === 'full-chap-link') return;
+
+                            // Filter footnotes
+                            if (className && className.includes('footnotes')) return;
 
                             // Filter hidden elements
                             if (className && className.includes('hidden')) return;
