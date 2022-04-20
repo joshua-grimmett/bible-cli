@@ -1,23 +1,15 @@
-# 📖 Bible Tools — ESV
+# 📖 Bible Tools
 
 ### 1. 🔦 Bible Passage Lookup 
-
-#### 1.0 Requirements
-
-You must have an API key set in your environment variables.
-
-```bash
-ESV_API_KEY = # API KEY HERE
-```
 
 #### 1.1 Passage search
 Default:
 ```bash
-esv [passage...]
+bible [options] [passage...]
 ```
 Example:
 ```bash
-esv Matthew 4:4
+bible Matthew 4:4
 # =>
 #   [4] But he answered, “It is written,
 #
@@ -28,10 +20,10 @@ esv Matthew 4:4
 #### 1.1.1 Passage search to clipboard
 
 ```bash
-esv -c [passage...]
+bible -c [passage...]
 ```
 ```bash
-esv --copy [passage...]
+bible --copy [passage...]
 ```
 
 #### 1.2 Passage search REPL
@@ -39,12 +31,12 @@ esv --copy [passage...]
 This command opens a REPL environemt and logs each passage to the console.
 
 ```bash
-esv
+bible
 ```
 
 Example:
-```bash
-esv
+```
+bible
 > Matthew 4:4
   [4] But he answered, “It is written,
 
@@ -61,8 +53,23 @@ esv
 This command opens a REPL environment and copies each passage to the clipboard.
 
 ```bash
-esv -c
+bible -c
 ```
 ```bash
-esv --copy
+bible --copy
+```
+
+#### 1.3 Set Translation
+
+```bash
+bible -t <translation>
+```
+
+Example: 
+```ini
+bible -t NASB gen 1:1
+# => The Creation
+#
+# [1] In the beginning God created the heavens and the earth.
+# Genesis 1:1 (New American Standard Bible)
 ```
