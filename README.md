@@ -101,6 +101,5 @@ bible -r for god so loved
 # For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.
 #
 # John 3:16 (Amplified Bible)
-#“For God so [greatly] loved and dearly prized the world, that He [even] gave His [One and] only begotten Son, so that whoever believes and trusts in Him [as Savior] shall not perish, but have eternal life.
+# “For God so [greatly] loved and dearly prized the world, that He [even] gave His [One and] only begotten Son, so that whoever believes and trusts in Him [as Savior] shall not perish, but have eternal life.
 ```
-Or
