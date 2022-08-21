@@ -104,6 +104,23 @@ module.exports = {
                         "404": "Error: Passage not found"
                     },
                     "apiKey": false
+                },
+                "getPassageReverse": {
+                    "url": "/quicksearch",
+                    "method": "get",
+                    "repl": true,
+                    "queryKey": "search",
+                    "params": {
+                        "version": "NLT;NIV;ESV;KJV;AMP",
+                        //"searchtype": "phrase"
+                    },
+                    "scrapeData": {
+                        "parentNode": ".content-section"
+                    },
+                    "messages": {
+                        "404": "Error: No results not found"
+                    },
+                    "apiKey": false
                 }
             }
         }

@@ -25,18 +25,16 @@ async function main(queryArray) {
      * Read-eval-print-loop when no args
      */
     if (queryArray.length < 1) {
-        return app.createGetPassageRepl(options);
+        app.createGetPassageRepl(options);
     }
-    
-    if (program.opts().reverse) {
+    /**
+     * Print query
+     */
+    else {
+        // Retrieve passage text from query
         const text = await app.getPassageReverse(query, options);
-        return process.stdout.write(text);
+        process.stdout.write(text);
     }
-
-    // Retrieve passage text from query
-    const text = await app.getPassage(query, options);
-
-    process.stdout.write(text);
 }
 
 /**
@@ -45,8 +43,6 @@ async function main(queryArray) {
 program
     // Define options
     .option('-c, --copy', 'Copy passage to clipboard')
-    // Define reverse search
-    .option('-r, --reverse', 'Reverse search (search for verses that contain the query)')
     // Define version option
     .option('-t, --translation <translation>', 'Set translation')
     // Define query argument
