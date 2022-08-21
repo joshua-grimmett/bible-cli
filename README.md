@@ -1,4 +1,7 @@
-# 📖 Bible Tools
+# 📖 Bible CLI
+*(Command line interface)*
+
+<img width="672" alt="Screen Shot 2022-08-22 at 3 42 48 am" src="https://user-images.githubusercontent.com/25496047/185803994-0ade88d1-d40d-409f-9ff0-48e7bfff8923.png">
 
 ### 1. 🔦 Lookup by reference (e.g. John 3:16)
 
