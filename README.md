@@ -1,11 +1,14 @@
-# 📖 Bible Tools
+# 📖 Bible CLI
+*(Command line interface)*
 
-### 1. 🔦 Bible Passage Lookup 
+<img width="672" alt="Screen Shot 2022-08-22 at 3 42 48 am" src="https://user-images.githubusercontent.com/25496047/185803994-0ade88d1-d40d-409f-9ff0-48e7bfff8923.png">
+
+### 1. 🔦 Lookup by reference (e.g. John 3:16)
 
 #### 1.1 Passage search
 Default:
 ```bash
-bible [options] [passage...]
+bible [options] [reference...]
 ```
 Example:
 ```bash
@@ -15,6 +18,10 @@ bible Matthew 4:4
 #
 #   “‘Man shall not live by bread alone,
 #        but by every word that comes from the mouth of God.’”
+```
+Or
+```bash
+bible mat 4:4
 ```
 
 #### 1.1.1 Passage search to clipboard
@@ -72,4 +79,30 @@ bible -t NASB gen 1:1
 #
 # [1] In the beginning God created the heavens and the earth.
 # Genesis 1:1 (New American Standard Bible)
+```
+
+### 2. 🔦 Lookup by keywords (e.g. For God so loved)
+
+Default:
+```bash
+bible -r [keywords...]
+```
+
+Example:
+```bash
+bible -r for god so loved
+# John 3:16 (New Living Translation)
+# “For this is how God loved the world: He gave his one and only Son, so that everyone who believes in him will not perish but have eternal life.
+#
+# John 3:16 (New International Version)
+# For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.
+#
+# John 3:16 (English Standard Version)
+# For God So Loved the World “For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life.
+#
+# John 3:16 (King James Version)
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.
+#
+# John 3:16 (Amplified Bible)
+# “For God so [greatly] loved and dearly prized the world, that He [even] gave His [One and] only begotten Son, so that whoever believes and trusts in Him [as Savior] shall not perish, but have eternal life.
 ```
