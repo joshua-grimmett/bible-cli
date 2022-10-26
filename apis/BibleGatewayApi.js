@@ -1,6 +1,6 @@
 
 const Api = require('./Api');
-const { highlightText } = require('../util');
+const { highlightText, stylePassage } = require('../util');
 
 // Get ESV API config from config file
 const metadata = require('../assets/apiMetadata').apis.biblegateway;
@@ -48,7 +48,8 @@ class BibleGatewayApi extends Api {
             queryText, 
             translationText
         } = this.scrapePassages(data, endpoint);
-        let output = passages.trim();
+        let output = stylePassage(passages.trim());
+        let clipOutput = passages.trim();
 
         // If no passage provided, return 404 error message
         if (!output) return endpoint.messages[404];
@@ -56,11 +57,13 @@ class BibleGatewayApi extends Api {
         // If passage query included add to output
         if (endpoint.params['include-passage-query']) {
             output += `\n${queryText}`;
+            clipOutput += `\n${queryText}`;
         }
 
         // If translation text included add to output
         if (endpoint.params['include-translation']) {
             output += ` (${translationText})`;
+            clipOutput += ` (${translationText})`;
         }
 
         /**
@@ -68,7 +71,7 @@ class BibleGatewayApi extends Api {
          */
          if (options.copy) {
             // Copy to clipboard
-            clipboard.writeSync(output);
+            clipboard.writeSync(clipOutput);
         }
 
         return highlightText(output, q);

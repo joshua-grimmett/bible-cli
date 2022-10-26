@@ -9,7 +9,7 @@ module.exports.highlightText = (target, q, colour) => {
             if (filter.indexOf(word.toLowerCase().trim()) > -1) {
                 neue += colour
                     ? colour(word) + ' '
-                    : chalk.red(word) + ' ';
+                    : chalk.blue(word) + ' ';
             } else {
                 neue += word + ' ';
             }
@@ -17,4 +17,8 @@ module.exports.highlightText = (target, q, colour) => {
         neue += '\n';
     }
     return neue;
+}
+
+module.exports.stylePassage = (passage) => {
+    return chalk.italic(passage);
 }
